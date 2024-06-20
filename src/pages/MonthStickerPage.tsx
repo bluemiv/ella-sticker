@@ -30,7 +30,7 @@ const MonthStickerPage = () => {
     fetchData().then((json) => {
       setStickerInfo(json[month?.toString() || dayjs().month().toString()]);
     });
-  }, []);
+  }, [month]);
 
   return (
     <div className="mx-auto max-w-[1200px] flex flex-col gap-xl">
@@ -79,18 +79,12 @@ const MonthStickerPage = () => {
               <div
                 className={classNames(
                   'rounded-full flex items-center justify-center w-[100px] h-[100px] font-bold',
-                  isDiscard
-                    ? 'bg-slate-50 text-sub-text'
-                    : hasSticker
-                      ? 'bg-brand-100'
-                      : 'bg-slate-100 text-sub-text',
+                  isDiscard ? 'bg-slate-50 text-sub-text' : 'bg-slate-100 text-sub-text',
                 )}
               >
                 {isDiscard
                   ? '해당없음'
-                  : hasSticker
-                    ? `${stickerCount}개 획득`
-                    : `${curDate.date()}일 (${{ 0: '일', 1: '월', 2: '화', 3: '수', 4: '목', 5: '금', 6: '토' }[curDate.day()]}) `}
+                  : `${curDate.date()}일 (${{ 0: '일', 1: '월', 2: '화', 3: '수', 4: '목', 5: '금', 6: '토' }[curDate.day()]}) `}
               </div>
             </div>
           );
