@@ -55,6 +55,25 @@ const MonthStickerPage = () => {
           const stickerCount = (stickerInfo?.sticker || {})[curDate.date().toString()] || 0;
           const hasSticker = stickerCount > 0;
 
+          if (!isDiscard && hasSticker) {
+            return (
+              <div key={date} className="flex items-center justify-center">
+                <div
+                  className={classNames(
+                    'rounded-full flex flex-col gap-sm items-center w-[100px] h-[100px]',
+                  )}
+                >
+                  <span className="">{stickerCount}개 획득</span>
+                  <img
+                    className="max-h-[60px] h-full animate-bounce"
+                    src={`/r/i/stamp${(date % 5) + 1}.png`}
+                    alt={date.toString()}
+                  />
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div key={date} className="flex items-center justify-center">
               <div
