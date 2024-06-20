@@ -3,7 +3,7 @@ import { TPropsWithChildren } from '../types';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ROUTE_PATH } from '../constants';
 import { BaseLayout } from '../layout';
-import { HomePage } from '../pages';
+import { HomePage, MonthStickerPage } from '../pages';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: ROUTE_PATH.ROOT,
         element: <HomePage />,
+      },
+      {
+        path: ROUTE_PATH.MONTH_STICKER,
+        element: <MonthStickerPage />,
       },
     ],
   },
