@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 const MonthStickerPage = () => {
@@ -9,6 +9,7 @@ const MonthStickerPage = () => {
     discard: number[];
   } | null>(null);
 
+  const nav = useNavigate();
   const params = useParams();
   const month = params?.month;
 
@@ -33,6 +34,14 @@ const MonthStickerPage = () => {
 
   return (
     <div className="mx-auto max-w-[1200px] flex flex-col gap-xl">
+      <div className="mt-lg">
+        <button
+          className="shadow-md bg-slate-50 hover:bg-slate-100 active:shadow-none rounded-md font-bold p-md"
+          onClick={() => nav(-1)}
+        >
+          &lt; 뒤로가기
+        </button>
+      </div>
       <div className="flex flex-col gap-lg text-center">
         <div className="text-2xl font-bold">{month}월 스티커 판</div>
         <div className="text-sub-text">
