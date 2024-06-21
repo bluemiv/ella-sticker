@@ -13,10 +13,18 @@ const MonthButton = ({ month }: TProps) => {
 
   return (
     <button
-      className="rounded-lg shadow-lg bg-slate-50 hover:bg-brand-100 active:shadow-none duration-200 ease-in-out transition w-[100px] h-[100px]"
+      className="relative rounded-lg overflow-hidden w-[150px] h-[150px] group"
       onClick={onClick}
     >
-      {month}월
+      <img
+        className="absolute top-0 w-full h-full object-cover group-hover:scale-110 transition ease-in-out duration-200"
+        src={`/r/i/month${month}.webp`}
+        alt={month.toString()}
+      />
+      <div className="absolute top-0 left-0 w-full h-full bg-black/30" />
+      <div className="absolute top-0 w-full h-full flex items-center justify-center">
+        <span className="text-white text-2xl font-bold">{month}월</span>
+      </div>
     </button>
   );
 };
