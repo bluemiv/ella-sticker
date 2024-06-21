@@ -42,10 +42,18 @@ const MonthStickerPage = () => {
           &lt; 뒤로가기
         </button>
       </div>
-      <div className="flex flex-col gap-lg text-center">
-        <div className="text-2xl font-bold">{month}월 스티커 판</div>
-        <div className="text-sub-text">
-          이번달도 열심히 모아볼까? 지각하지 않는 너의 모습이 너무 아름다워!
+      <div className="relative h-[240px] text-white rounded-md overflow-hidden">
+        <div className="absolute top-0 left-0 w-full">
+          <img className="w-full h-[240px] object-cover" src={`/r/i/month${month}.webp`} alt="bg" />
+        </div>
+        <div className="absolute top-0 bg-black/20 backdrop-blur-sm w-full h-full" />
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center gap-lg text-center">
+          <div className="text-2xl font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            {month}월 스티커 판
+          </div>
+          <div className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            이번달도 열심히 모아볼까? 지각하지 않는 너의 모습이 너무 아름다워!
+          </div>
         </div>
       </div>
       <div className="mx-auto grid grid-cols-5 gap-xl">
