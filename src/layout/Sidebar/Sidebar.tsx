@@ -2,15 +2,22 @@ import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 
 import SidebarSection from './SidebarSection';
+import { useParams } from 'react-router-dom';
+import stickerApi from '../../api/stickerApi';
+import { DASHBOARD_ID } from '../../constants';
 
 const Sidebar = () => {
+  const params = useParams();
+  const user = params.user;
+
   const [curMonthData, setCurMonthData] = useState<{
     sticker: { [key: string]: any };
     discard: number[];
   } | null>(null);
 
   const fetchData = async () => {
-    const res = await fetch(`/data/${dayjs().year()}/sticker.json`);
+    const { url } = stickerApi.getSticker({ user: DASHBOARD_ID.ELLA, year: dayjs().year() });
+    const res = await fetch(url);
     return res.json();
   };
 
@@ -27,7 +34,7 @@ const Sidebar = () => {
     <div className="bg-sidebar-background w-[330px] p-md flex flex-col justify-between h-full">
       <aside className="flex flex-col gap-md">
         <SidebarSection>
-          <div className="text-center text-3xl">Ella Sticker</div>
+          <div className="text-center text-3xl">{user?.toLocaleUpperCase()} Sticker</div>
         </SidebarSection>
         <SidebarSection title="이번달 현황">
           <div>총 받은 스티커 {totalSticker}개</div>
