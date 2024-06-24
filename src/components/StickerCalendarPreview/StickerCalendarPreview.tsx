@@ -1,55 +1,30 @@
-import React, { useMemo, useRef } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react';
+import dayjs, { Dayjs } from 'dayjs';
+
+import Calendar from './Calendar';
 
 interface TProps {
   month: number;
 }
 
 const StickerCalendarPreview = ({ month }: TProps) => {
-  const baseDate = dayjs().month(month - 1);
-  const daysInMonth = baseDate.daysInMonth();
-
-  const calendar = useMemo(() => {
-    let curDate = 1;
-    const result = [];
-    while (true) {
-      if (curDate > daysInMonth) break;
-
-      result.push(
-        [0, 1, 2, 3, 4, 5, 6].map((day, j) => {
-          if (curDate > daysInMonth) return null;
-          const isCurDay = dayjs().date(curDate).day() === day;
-          if (isCurDay) {
-            const date = curDate;
-            curDate += 1;
-            return date;
-          }
-          return null;
-        }),
-      );
-    }
-    return result;
-  }, [month]);
-
-  console.log(calendar);
+  const [baseDate, setBaseDate] = useState<Dayjs>(dayjs().month(month - 1));
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col gap-xl items-center">
       <div className="text-4xl">{dayjs().format('YYYY . MM')}</div>
-      <div>
-        {calendar.map((week, i) => {
-          return (
-            <div key={i} className="flex gap-md">
-              {week.map((date) => {
-                return (
-                  <div key={[i, date].join('-')} className="w-[50px] h-[50px]">
-                    {!!date ? date : ''}
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+      <Calendar baseDate={baseDate} />
+      <div className="flex gap-xl">
+        {[
+          { label: '1개', color: '#20c997' },
+          { label: '2개', color: '#5c7cfa' },
+          { label: '3개 이상', color: '#845ef7' },
+        ].map(({ label, color }) => (
+          <div key={label} className="flex items-center gap-sm">
+            <div className={`w-[11px] h-[11px] bg-[${color}] rounded-full`} />
+            <span className="text-sm">{label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

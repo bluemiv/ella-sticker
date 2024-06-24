@@ -3,8 +3,10 @@ import { StickerCalendarPreview } from '../components';
 
 const UserDashboardPage = () => {
   return (
-    <div>
-      <StickerCalendarPreview month={6} />
+    <div className="w-full h-screen flex items-center">
+      <div className="max-w-[900px] mx-auto">
+        <StickerCalendarPreview month={6} />
+      </div>
     </div>
   );
 };
