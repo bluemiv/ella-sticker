@@ -20,7 +20,8 @@ const height = {
 const colors = {
   text: '#212529',
   'sub-text': '#868e96',
-  background: '#ffffff',
+  'main-background': '#233067',
+  'sidebar-background': '#5c7cfa',
 
   ...toTailwindColor('brand', [
     '#e6f7ff',

@@ -1,4 +1,6 @@
 export const ROUTE_PATH = {
   ROOT: '/',
-  MONTH_STICKER: '/month-sticker/:month',
+  USER_DASHBOARD: '/dashboard/:user',
+  MONTH_STICKER: '/dashboard/:user/month-sticker/:month',
+  CHART: '/chart',
 } as const;

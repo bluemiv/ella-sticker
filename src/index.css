@@ -10,5 +10,5 @@ html body {
     width: 100vw;
     height: 100vh;
     overflow: auto;
-    @apply text-text bg-background;
+    @apply text-white bg-main-background;
 }
