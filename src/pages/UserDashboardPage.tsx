@@ -4,7 +4,7 @@ import { StickerCalendarPreview } from '../components';
 const UserDashboardPage = () => {
   return (
     <div>
-      <StickerCalendarPreview />
+      <StickerCalendarPreview month={6} />
     </div>
   );
 };

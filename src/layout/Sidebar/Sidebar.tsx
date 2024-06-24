@@ -34,7 +34,7 @@ const Sidebar = () => {
     <div className="bg-sidebar-background w-[330px] p-md flex flex-col justify-between h-full">
       <aside className="flex flex-col gap-md">
         <SidebarSection>
-          <div className="text-center text-3xl">{user?.toLocaleUpperCase()} Sticker</div>
+          <div className="text-center text-3xl">{user?.toLocaleUpperCase()} 스티커</div>
         </SidebarSection>
         <SidebarSection title="이번달 현황">
           <div>총 받은 스티커 {totalSticker}개</div>
