@@ -4,19 +4,24 @@ import dayjs, { Dayjs } from 'dayjs';
 
 import stickerApi from '../../api/stickerApi';
 import { DASHBOARD_ID } from '../../constants';
+import { useParams } from 'react-router-dom';
 
 interface TProps {
   baseDate: Dayjs;
 }
 
 const Calendar = ({ baseDate }: TProps) => {
+  const params = useParams();
   const [curMonthData, setCurMonthData] = useState<{
     sticker: { [key: string]: any };
     discard: number[];
   } | null>(null);
 
   const fetchData = async () => {
-    const { url } = stickerApi.getSticker({ user: DASHBOARD_ID.ELLA, year: dayjs().year() });
+    const { url } = stickerApi.getSticker({
+      user: params?.user?.toLocaleUpperCase() || DASHBOARD_ID.ELLA,
+      year: dayjs().year(),
+    });
     const res = await fetch(url);
     return res.json();
   };

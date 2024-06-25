@@ -16,7 +16,10 @@ const Sidebar = () => {
   } | null>(null);
 
   const fetchData = async () => {
-    const { url } = stickerApi.getSticker({ user: DASHBOARD_ID.ELLA, year: dayjs().year() });
+    const { url } = stickerApi.getSticker({
+      user: params?.user?.toLocaleUpperCase() || DASHBOARD_ID.ELLA,
+      year: dayjs().year(),
+    });
     const res = await fetch(url);
     return res.json();
   };
