@@ -8,7 +8,7 @@ interface TProps {
 }
 
 const StickerCalendarPreview = ({ month }: TProps) => {
-  const [baseDate, setBaseDate] = useState<Dayjs>(dayjs().month(month - 1));
+  const [baseDate, setBaseDate] = useState<Dayjs>(dayjs().month(month));
 
   return (
     <div className="flex flex-col gap-xl items-center">
